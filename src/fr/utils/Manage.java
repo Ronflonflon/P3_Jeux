@@ -43,6 +43,7 @@ public class Manage {
 		
 		my_person.nb_to_guess = sc.nextInt();
 		
+		my_computer = my_computer.actualize_list(my_computer, 0);
 		while (win == 0) {
 			
 		}

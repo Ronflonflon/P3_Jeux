@@ -21,17 +21,10 @@ public class Computer extends Player {
 		return nb;
 	}
 	
-	public Computer actualize_list(Computer list, int initialize) {
+	public Computer() {
 		Calculs calcul = new Calculs();
-		int moyenne = 5555;
-		
-		if (initialize == 0) {
-			//list.tab_try = calcul.create_tab(this);
-			//list.min = calcul.create_tab(0000);
-			
-		} else {
-			
-		}
-		return list;
+		int moyenne;
+		int min;
+		int max;
 	}
 }

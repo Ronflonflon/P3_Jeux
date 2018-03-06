@@ -35,7 +35,6 @@ public class Calculs {
 		List nb_list = new LinkedList();
 		int unit = 0;
 		
-		System.out.println("ICI C'EST : " + player.size);
 		for (int i = 0; i < player.size; i++) {
 			unit = find_unit(nb);
 			if (nb <= 0) {
