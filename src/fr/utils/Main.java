@@ -30,8 +30,10 @@ public class Main {
 			} else {
 				System.out.println("La valeur que vous avez entré semble incorrect ! :o");
 			}
+			System.out.println("Voulez-vous rejouer (1 = Oui, 2 = Non) : ");
 			Scanner sc1 = new Scanner (System.in);
 			start = sc1.nextInt();
 		}
+		System.out.println("Au revoir !");
 	}
 }

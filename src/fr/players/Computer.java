@@ -26,8 +26,9 @@ public class Computer extends Player {
 		int moyenne = 5555;
 		
 		if (initialize == 0) {
-			list.tab_try = calcul.create_tab(moyenne);
-			list.min = calcul.create_tab(0000);
+			//list.tab_try = calcul.create_tab(this);
+			//list.min = calcul.create_tab(0000);
+			
 		} else {
 			
 		}

@@ -8,7 +8,7 @@ import fr.players.Player;
 import fr.utils.*;
 	
 public class Manage {
-	public void challenger(int mode) {
+	public int challenger(int mode) {
 		Calculs calcul = new Calculs();
 		Comparator compar = new Comparator();
 		Person my_person = new Person();
@@ -16,6 +16,7 @@ public class Manage {
 		int win = 0;
 		
 		my_computer.nb_to_guess = my_computer.generate_nb();
+		my_computer.size = calcul.nb_size(my_computer.nb_to_guess);
 		
 		while (win == 0) {
 			System.out.print("Choisi un nombre contenant " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres : ");
@@ -29,6 +30,7 @@ public class Manage {
 			}
 		}
 		System.out.println("Code dévérouillé en " + my_person.shots + " coups, bravo !");
+		return win;
 	}
 	
 	public void defender(int mode) {

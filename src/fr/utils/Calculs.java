@@ -27,19 +27,16 @@ public class Calculs {
 		return nb_size;
 	}
 	
-	/*
-	 * PROBLEME A PARTIR D'ICI
-	 */
 	public int find_unit (int nb) {
 		return nb % 10;
 	}
 	
-	public List create_tab (int nb) {
+	public List create_tab (Player player, int nb) {
 		List nb_list = new LinkedList();
 		int unit = 0;
-		int size = nb_size(nb);
 		
-		for (int i = 0; i < size; i++) {
+		System.out.println("ICI C'EST : " + player.size);
+		for (int i = 0; i < player.size; i++) {
 			unit = find_unit(nb);
 			if (nb <= 0) {
 				nb_list.add(0);
