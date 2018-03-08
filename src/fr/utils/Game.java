@@ -7,7 +7,7 @@ import fr.players.Person;
 import fr.players.Player;
 import fr.utils.*;
 	
-public class Manage {
+public class Game {
 	public int challenger(int mode) {
 		Calculs calcul = new Calculs();
 		Comparator compar = new Comparator();
@@ -43,10 +43,11 @@ public class Manage {
 		
 		my_person.nb_to_guess = sc.nextInt();
 		
+		/*
 		my_computer = my_computer.actualize_list(my_computer, 0);
 		while (win == 0) {
 			
-		}
+		}*/
 	}
 	
 	public void dual(int mode) {

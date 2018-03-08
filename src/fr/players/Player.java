@@ -14,18 +14,4 @@ public class Player {
 	public Player() {
 		shots = 0;
 	}
-	
-	public void make_clean() {
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-		System.out.println();
-	}
 }

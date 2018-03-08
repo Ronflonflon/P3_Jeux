@@ -1,16 +1,29 @@
-package fr.utils;
+package fr.main;
 
-import fr.players.*;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-import fr.utils.Manage;
+
+import fr.utils.Game;
 
 public class Main {
 
 	public static void main(String[] args) {
 		int start = 1;
 		int mode;
-		Manage manager = new Manage();
+		Game manager = new Game();
+		Scanner sc = new Scanner(System.in);
 		
+		while (true) {
+			try {
+				System.out.print("Largeur ? ");
+				System.out.println(sc.nextInt());
+			} catch (InputMismatchException e) {
+				e.printStackTrace();
+				sc.nextLine();
+			}
+		}
+		
+		/*
 		System.out.println("============ Plus ou moins ============");
 		while (start == 1) {
 			System.out.println("A quel mode de jeu souhaites-tu jouer ?");
@@ -18,7 +31,6 @@ public class Main {
 			System.out.println("- 2 pour le Mode Défenseur");
 			System.out.println("- 3 pour le Mode Duel");
 			System.out.print("Choisi le mode de jeu : ");
-			Scanner sc = new Scanner (System.in);
 			mode = sc.nextInt();
 			
 			if (mode == 1) {
@@ -31,9 +43,10 @@ public class Main {
 				System.out.println("La valeur que vous avez entré semble incorrect ! :o");
 			}
 			System.out.println("Voulez-vous rejouer (1 = Oui, 2 = Non) : ");
-			Scanner sc1 = new Scanner (System.in);
-			start = sc1.nextInt();
+			start = sc.nextInt();
 		}
-		System.out.println("Au revoir !");
+		*/
+		//System.out.println("Au revoir !");
+//		sc.close();
 	}
 }
