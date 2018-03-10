@@ -35,19 +35,31 @@ public class Game {
 	
 	public void defender(int mode) {
 		Person my_person = new Person();
-		Computer my_computer = new Computer();
+		Calculs calcul = new Calculs();
+		Comparator compar = new Comparator();
 		int win = 0;
 		
 		System.out.print("Choisi le nombre à faire deviner : ");
 		Scanner sc = new Scanner(System.in);
-		
+		Computer my_computer = new Computer();
+		int min = 0;
+		int max = 9;
+		int moyenne = 5;
 		my_person.nb_to_guess = sc.nextInt();
+		my_person.tab_to_guess = calcul.create_tab(my_person, my_person.nb_to_guess);
+		my_person.size = calcul.nb_size(my_person.nb_to_guess);
+		my_computer.size = my_person.size;
 		
-		/*
-		my_computer = my_computer.actualize_list(my_computer, 0);
+		//my_computer.tab_try = calcul.create_tab(my_computer, nb);
+		
 		while (win == 0) {
-			
-		}*/
+			if (calcul.nb_size(my_computer.nb_to_guess) >= calcul.nb_size(my_person.nb_try)) {
+				win = compar.compar_numbers(my_computer, my_person);
+				my_person.shots++;
+			} else {
+				System.out.println("Le nombre doit contenir " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres !");
+			}
+		}
 	}
 	
 	public void dual(int mode) {

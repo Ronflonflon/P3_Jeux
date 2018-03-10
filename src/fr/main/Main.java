@@ -13,17 +13,6 @@ public class Main {
 		Game manager = new Game();
 		Scanner sc = new Scanner(System.in);
 		
-		while (true) {
-			try {
-				System.out.print("Largeur ? ");
-				System.out.println(sc.nextInt());
-			} catch (InputMismatchException e) {
-				e.printStackTrace();
-				sc.nextLine();
-			}
-		}
-		
-		/*
 		System.out.println("============ Plus ou moins ============");
 		while (start == 1) {
 			System.out.println("A quel mode de jeu souhaites-tu jouer ?");
@@ -45,8 +34,8 @@ public class Main {
 			System.out.println("Voulez-vous rejouer (1 = Oui, 2 = Non) : ");
 			start = sc.nextInt();
 		}
-		*/
-		//System.out.println("Au revoir !");
-//		sc.close();
+		
+		System.out.println("Au revoir !");
+		sc.close();
 	}
 }

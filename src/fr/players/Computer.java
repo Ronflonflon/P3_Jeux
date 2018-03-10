@@ -20,11 +20,4 @@ public class Computer extends Player {
 		}
 		return nb;
 	}
-	
-	public Computer() {
-		Calculs calcul = new Calculs();
-		int moyenne;
-		int min;
-		int max;
-	}
 }
