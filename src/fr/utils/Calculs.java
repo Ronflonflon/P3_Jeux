@@ -2,7 +2,8 @@ package fr.utils;
 
 import java.util.LinkedList;
 import java.util.List;
-import fr.players.*;
+
+import fr.players.Player;
 
 public class Calculs {
 	public int generate_divisor (int nb) {
@@ -31,10 +32,10 @@ public class Calculs {
 		return nb % 10;
 	}
 	
-	public List create_tab (Player player, int nb) {
+	public List create_tab (Player player, int nb, int mode) {
 		List nb_list = new LinkedList();
 		int unit = 0;
-		
+				
 		for (int i = 0; i < player.size; i++) {
 			unit = find_unit(nb);
 			if (nb <= 0) {
@@ -44,7 +45,7 @@ public class Calculs {
 			}
 			nb = (nb - unit) / 10;
 		}
-		
+
 		return nb_list;
 	}
 }
