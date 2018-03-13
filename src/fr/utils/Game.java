@@ -38,10 +38,10 @@ public class Game {
 		Person my_person = new Person();
 		Calculs calcul = new Calculs();
 		Comparator compar = new Comparator();
+		Scanner sc = new Scanner(System.in);
 		int win = 0;
 		
 		System.out.print("Choisi le nombre à faire deviner : ");
-		Scanner sc = new Scanner(System.in);
 		my_person.nb_to_guess = sc.nextInt();
 		Computer my_computer = new Computer();
 		my_computer.size = my_person.size = calcul.nb_size(my_person.nb_to_guess);
@@ -65,11 +65,12 @@ public class Game {
 		Comparator compar = new Comparator();
 		Person my_person = new Person();
 		Computer my_computer = new Computer();
+		Scanner resp = new Scanner (System.in);
+		Scanner sc = new Scanner(System.in);
 		int win_person = 0;
 		int win_computer = 0;
 		
 		System.out.print("Choisi le nombre à faire deviner : ");
-		Scanner sc = new Scanner(System.in);
 		my_person.nb_to_guess = sc.nextInt();
 		my_computer.size = my_person.size = calcul.nb_size(my_person.nb_to_guess);
 		my_person.tab_to_guess = calcul.create_tab(my_person, my_person.nb_to_guess, mode);
@@ -80,7 +81,6 @@ public class Game {
 		
 		while (win_person == 0 && win_computer == 0) {
 			System.out.print("Choisi un nombre contenant " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres : ");
-			Scanner resp = new Scanner (System.in);
 			my_person.nb_try = resp.nextInt();
 			if (calcul.nb_size(my_computer.nb_to_guess) >= calcul.nb_size(my_person.nb_try)) {
 				System.out.print("Resultat joueur : ");
