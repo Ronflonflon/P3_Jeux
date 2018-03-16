@@ -1,9 +1,9 @@
-package fr.utils;
+package plusOUmoins.fr.utils;
 
 import java.util.LinkedList;
 import java.util.List;
-import fr.players.*;
-import fr.utils.Calculs;
+import plusOUmoins.fr.players.*;
+import plusOUmoins.fr.utils.Calculs;
 
 public class Comparator {
 	int compar_numbers_challenger (Computer my_computer, Person my_person, int mode) {

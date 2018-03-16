@@ -1,10 +1,10 @@
-package fr.players;
+package plusOUmoins.fr.players;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import fr.utils.Calculs;
+import plusOUmoins.fr.utils.Calculs;
 
 public class Computer extends Player {
 	public List min;

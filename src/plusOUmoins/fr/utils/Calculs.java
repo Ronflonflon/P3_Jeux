@@ -1,9 +1,9 @@
-package fr.utils;
+package plusOUmoins.fr.utils;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import fr.players.Player;
+import plusOUmoins.fr.players.Player;
 
 public class Calculs {
 	public int generate_divisor (int nb) {

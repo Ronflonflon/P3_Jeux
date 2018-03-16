@@ -1,10 +1,9 @@
-package fr.utils;
+package plusOUmoins.fr.utils;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import fr.players.Computer;
-import fr.players.Person;
+import plusOUmoins.fr.players.Computer;
+import plusOUmoins.fr.players.Person;
 
 public class Game {
 	public int challenger(int mode) {
@@ -66,7 +65,6 @@ public class Game {
 		} catch (Exception e) {
 			System.out.println("La valeur que vous avez entré semble incorrecte...");
 		}
-
 		return win;
 	}
 
@@ -116,7 +114,6 @@ public class Game {
 		} catch (Exception e) {
 			System.out.println("La valeur que vous avez entré semble incorrecte...");
 		}
-
 		return 0;
 	}
 }
