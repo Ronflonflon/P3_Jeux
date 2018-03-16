@@ -36,7 +36,6 @@ public class Plusoumoins {
 				try {
 					System.out.println("Voulez-vous rejouer (1 = Oui, 2 = Non) : ");
 					start = sc.nextInt();
-					System.out.println("Valeur de start : " + start);
 				} catch (Exception e) {
 					System.out.println("La valeur que vous avez entré semble incorrecte...");
 					start = 0;
