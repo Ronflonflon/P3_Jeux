@@ -32,7 +32,7 @@ public class Calculspom {
 		return nb % 10;
 	}
 	
-	public List create_tab (Playerpom player, int nb, int mode) {
+	public List create_tab (Playerpom player, int nb) {
 		List nb_list = new LinkedList();
 		int unit = 0;
 				

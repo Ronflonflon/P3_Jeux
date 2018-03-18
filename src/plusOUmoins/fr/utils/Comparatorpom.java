@@ -6,14 +6,14 @@ import plusOUmoins.fr.players.*;
 import plusOUmoins.fr.utils.Calculspom;
 
 public class Comparatorpom {
-	int compar_numbers_challenger (Computerpom my_computer, Personpom my_person, int mode) {
+	int compar_numbers_challenger (Computerpom my_computer, Personpom my_person) {
 		int good_shot = 0;
 		Calculspom calcul = new Calculspom();
 		
 		my_person.size = calcul.nb_size(my_computer.nb_to_guess);
 		my_computer.size = calcul.nb_size(my_computer.nb_to_guess);
-		my_computer.tab_to_guess = 	calcul.create_tab(my_computer, my_computer.nb_to_guess, mode);
-		my_person.tab_try = calcul.create_tab(my_person, my_person.nb_try, mode);
+		my_computer.tab_to_guess = 	calcul.create_tab(my_computer, my_computer.nb_to_guess);
+		my_person.tab_try = calcul.create_tab(my_person, my_person.nb_try);
 		
 		for (int i = (my_computer.tab_to_guess.size() - 1); i >= 0 ; i--) {
 			if ((int) my_computer.tab_to_guess.get(i) < (int) my_person.tab_try.get(i)) {
@@ -42,7 +42,7 @@ public class Comparatorpom {
 	}
 	
 	@SuppressWarnings("unchecked")
-	int compar_numbers_defender (Computerpom my_computer, Personpom my_person, int mode) {
+	int compar_numbers_defender (Computerpom my_computer, Personpom my_person) {
 		int good_shot = 0;
 		Calculspom calcul = new Calculspom();
 		

@@ -3,6 +3,7 @@ package plusOUmoins.fr.main;
 import java.util.Scanner;
 
 import plusOUmoins.fr.utils.Gamepom;
+import plusOUmoins.fr.utils.Messagespom;
 
 public class Plusoumoins {
 	public void Plusoumoins(int dev) {
@@ -10,15 +11,12 @@ public class Plusoumoins {
 		int mode;
 		Scanner sc = new Scanner(System.in);
 		Gamepom manager = new Gamepom();
+		Messagespom message = new Messagespom();
 		
 		System.out.println("============ Plus ou moins ============");
 			while (start == 1) {
 				try {
-					System.out.println("A quel mode de jeu souhaites-tu jouer ?");
-					System.out.println("- 1 pour le Mode Challenger");
-					System.out.println("- 2 pour le Mode Défenseur");
-					System.out.println("- 3 pour le Mode Duel");
-					System.out.print("Choisi le mode de jeu : ");
+					message.choose_mod();
 					mode = sc.nextInt();
 					if (mode == 1) {
 						manager.challenger_pom(dev);
@@ -27,21 +25,21 @@ public class Plusoumoins {
 					} else if (mode == 3) {
 						manager.dual_pom(dev);
 					} else {
-						System.out.println("La valeur que vous avez entré semble incorrecte");
+						message.fail_value();
 						mode = 0;
 					}
 				} catch (Exception e) {
-					System.out.println("La valeur que vous avez entré semble incorrecte...");
+					message.fail_value();
 				}
 				try {
-					System.out.println("Voulez-vous rejouer (1 = Oui, 2 = Non) : ");
+					message.restart_game();
 					start = sc.nextInt();
 				} catch (Exception e) {
-					System.out.println("La valeur que vous avez entré semble incorrecte...");
+					message.fail_value();
 					start = 0;
 				}
 			}
 			sc.close();
-			System.out.println("Au revoir !");
+			message.end_game();
 	}
 }
