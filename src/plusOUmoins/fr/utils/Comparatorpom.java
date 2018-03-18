@@ -3,12 +3,12 @@ package plusOUmoins.fr.utils;
 import java.util.LinkedList;
 import java.util.List;
 import plusOUmoins.fr.players.*;
-import plusOUmoins.fr.utils.Calculs;
+import plusOUmoins.fr.utils.Calculspom;
 
-public class Comparator {
-	int compar_numbers_challenger (Computer my_computer, Person my_person, int mode) {
+public class Comparatorpom {
+	int compar_numbers_challenger (Computerpom my_computer, Personpom my_person, int mode) {
 		int good_shot = 0;
-		Calculs calcul = new Calculs();
+		Calculspom calcul = new Calculspom();
 		
 		my_person.size = calcul.nb_size(my_computer.nb_to_guess);
 		my_computer.size = calcul.nb_size(my_computer.nb_to_guess);
@@ -42,9 +42,9 @@ public class Comparator {
 	}
 	
 	@SuppressWarnings("unchecked")
-	int compar_numbers_defender (Computer my_computer, Person my_person, int mode) {
+	int compar_numbers_defender (Computerpom my_computer, Personpom my_person, int mode) {
 		int good_shot = 0;
-		Calculs calcul = new Calculs();
+		Calculspom calcul = new Calculspom();
 		
 		my_person.size = calcul.nb_size(my_computer.nb_to_guess);
 		my_computer.size = calcul.nb_size(my_computer.nb_to_guess);

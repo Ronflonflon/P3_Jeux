@@ -4,9 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import plusOUmoins.fr.utils.Calculs;
+import plusOUmoins.fr.utils.Calculspom;
 
-public class Computer extends Player {
+public class Computerpom extends Playerpom {
 	public List min;
 	public List max;
 	public List result;
@@ -30,7 +30,7 @@ public class Computer extends Player {
 		return nb;
 	}
 	
-	public Computer initialize_compute_tabs (Computer my_computer) {
+	public Computerpom initialize_compute_tabs (Computerpom my_computer) {
 		int moyenne = 5;
 		int min = 0;
 		int max = 10;

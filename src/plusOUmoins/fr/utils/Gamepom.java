@@ -2,21 +2,20 @@ package plusOUmoins.fr.utils;
 
 import java.util.Scanner;
 
-import plusOUmoins.fr.players.Computer;
-import plusOUmoins.fr.players.Person;
+import plusOUmoins.fr.players.Computerpom;
+import plusOUmoins.fr.players.Personpom;
 
-public class Game {
-	public int challenger(int mode) {
-		Calculs calcul = new Calculs();
-		Comparator compar = new Comparator();
-		Person my_person = new Person();
-		Computer my_computer = new Computer();
+public class Gamepom {
+	public int challenger_pom(int mode) {
+		Calculspom calcul = new Calculspom();
+		Comparatorpom compar = new Comparatorpom();
+		Personpom my_person = new Personpom();
+		Computerpom my_computer = new Computerpom();
 		Scanner sc = new Scanner(System.in);
 		int win = 0;
 
 		try {
 			System.out.print("Choisi la taille du nombre à deviner : ");
-			//TODO Convertir en absolu
 			my_computer.size = sc.nextInt();
 			if (my_computer.size <= 0) {
 				System.out.println("La taille " + my_computer.size + " n'est pas valide...");
@@ -44,10 +43,10 @@ public class Game {
 		return win;
 	}
 
-	public int defender(int mode) {
-		Person my_person = new Person();
-		Calculs calcul = new Calculs();
-		Comparator compar = new Comparator();
+	public int defender_pom(int mode) {
+		Personpom my_person = new Personpom();
+		Calculspom calcul = new Calculspom();
+		Comparatorpom compar = new Comparatorpom();
 		Scanner sc = new Scanner(System.in);
 		int win = 0;
 
@@ -58,7 +57,7 @@ public class Game {
 			if (my_person.nb_to_guess <= 0) {
 				System.out.println("Le nombre ne peut pas être " + my_person.nb_to_guess + ", il doit être supérieur à 0");
 			} else {
-				Computer my_computer = new Computer();
+				Computerpom my_computer = new Computerpom();
 				my_computer.size = my_person.size = calcul.nb_size(my_person.nb_to_guess);
 				my_person.tab_to_guess = calcul.create_tab(my_person, my_person.nb_to_guess, mode);
 		
@@ -77,11 +76,11 @@ public class Game {
 		return win;
 	}
 
-	public int dual(int mode) {
-		Calculs calcul = new Calculs();
-		Comparator compar = new Comparator();
-		Person my_person = new Person();
-		Computer my_computer = new Computer();
+	public int dual_pom(int mode) {
+		Calculspom calcul = new Calculspom();
+		Comparatorpom compar = new Comparatorpom();
+		Personpom my_person = new Personpom();
+		Computerpom my_computer = new Computerpom();
 		Scanner resp = new Scanner(System.in);
 		Scanner sc = new Scanner(System.in);
 		int win_person = 0;

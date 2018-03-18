@@ -3,9 +3,9 @@ package plusOUmoins.fr.utils;
 import java.util.LinkedList;
 import java.util.List;
 
-import plusOUmoins.fr.players.Player;
+import plusOUmoins.fr.players.Playerpom;
 
-public class Calculs {
+public class Calculspom {
 	public int generate_divisor (int nb) {
 		int divisor = 1;
 		int nb_size = nb_size(nb);
@@ -32,7 +32,7 @@ public class Calculs {
 		return nb % 10;
 	}
 	
-	public List create_tab (Player player, int nb, int mode) {
+	public List create_tab (Playerpom player, int nb, int mode) {
 		List nb_list = new LinkedList();
 		int unit = 0;
 				

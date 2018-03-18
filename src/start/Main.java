@@ -11,6 +11,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		Plusoumoins party_pom = new Plusoumoins();
 		Mastermind party_mm = new Mastermind();
+		int dev = 0;
 		
 		int game = 0;
 		
@@ -22,10 +23,13 @@ public class Main {
 		try {
 			game = sc.nextInt();
 			
+			System.out.println("Voulez-vous être en mode développeur ? (1 = Oui, 2 = Non) : "); 
+			dev = sc.nextInt();
+			
 			if (game == 1) {
-				party_pom.Plusoumoins();
+				party_pom.Plusoumoins(dev);
 			} else if (game == 2) {
-				party_mm.Mastermind();
+				party_mm.Mastermind(dev);
 			} else {
 				System.out.println("La valeur que vous avez entré semble incorrecte...");
 			}

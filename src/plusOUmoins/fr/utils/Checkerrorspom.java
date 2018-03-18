@@ -1,6 +1,6 @@
 package plusOUmoins.fr.utils;
 
-public class Checkerrors {
+public class Checkerrorspom {
 	int is_positive (int nb) {
 		if (nb >= 0) {
 			return 1;

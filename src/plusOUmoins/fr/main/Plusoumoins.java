@@ -2,14 +2,14 @@ package plusOUmoins.fr.main;
 
 import java.util.Scanner;
 
-import plusOUmoins.fr.utils.Game;
+import plusOUmoins.fr.utils.Gamepom;
 
 public class Plusoumoins {
-	public void Plusoumoins() {
+	public void Plusoumoins(int dev) {
 		int start = 1;
 		int mode;
 		Scanner sc = new Scanner(System.in);
-		Game manager = new Game();
+		Gamepom manager = new Gamepom();
 		
 		System.out.println("============ Plus ou moins ============");
 			while (start == 1) {
@@ -21,11 +21,11 @@ public class Plusoumoins {
 					System.out.print("Choisi le mode de jeu : ");
 					mode = sc.nextInt();
 					if (mode == 1) {
-						manager.challenger(mode);
+						manager.challenger_pom(dev);
 					} else if (mode == 2) {
-						manager.defender(mode);
+						manager.defender_pom(dev);
 					} else if (mode == 3) {
-						manager.dual(mode);
+						manager.dual_pom(dev);
 					} else {
 						System.out.println("La valeur que vous avez entré semble incorrecte");
 						mode = 0;
