@@ -39,7 +39,7 @@ public class Computerpom extends Playerpom {
 		my_computer.max = new LinkedList();
 		my_computer.result = new LinkedList();
 
-		for (int i = 0; i < my_computer.size; i++) {;
+		for (int i = 0; i < my_computer.size; i++) {
 			my_computer.tab_try.add(moyenne);
 		}
 		for (int i = 0;  i < my_computer.size; i++) {
