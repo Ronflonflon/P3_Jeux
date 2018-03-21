@@ -34,6 +34,7 @@ public class Main {
 				System.out.println("La valeur que vous avez entré semble incorrecte...");
 			}
 		} catch (Exception e) {
+			//OK
 			System.out.println("La valeur que vous avez entré semble incorrecte...");
 		}
 		

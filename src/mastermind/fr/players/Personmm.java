@@ -1,5 +1,5 @@
 package mastermind.fr.players;
 
-public class Personmm {
+public class Personmm extends Playermm{
 	
 }

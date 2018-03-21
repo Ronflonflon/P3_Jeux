@@ -16,7 +16,7 @@ public class Mastermind {
 		System.out.println("============= Mastermind =============");
 		
 		while (start == 1) {
-			try {
+			//try {
 				messages.choose_mod();
 				mode = sc.nextInt();
 				if (mode == 1) {
@@ -26,19 +26,24 @@ public class Mastermind {
 				} else if (mode == 3) {
 					manager.dual_mm(mode);
 				} else {
+					System.out.println("EE");
 					messages.fail_value();
 					mode = 0;
 				}
-			} catch (Exception e) {
+			/*} catch (Exception e) {
+				System.out.println("EEE");
 				messages.fail_value();
-			}
+			}*/
 			try {
 				messages.restart_game();
 				start = sc.nextInt();
 			} catch (Exception e) {
+				System.out.println("Valeur start : " + start);
 				messages.fail_value();
 				start = 0;
 			}
 		}
+		sc.close();
+		messages.end_game();
 	}
 }
