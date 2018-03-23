@@ -41,9 +41,10 @@ public class Calculsmm {
 	
 	public int[] create_tab (int nb, int size) {
 		int tab[] = new int[size];
+		int max_index = size - 1;
 		int unit = 0;
 		
-		for (int i = 0; i < size; i++) {
+		for (int i = (size - 1); i >= 0; i--) {
 			unit = find_unit(nb);
 			if (nb <= 0) {
 				tab[i] = 0;
@@ -63,5 +64,36 @@ public class Calculsmm {
 			nb_size++;
 		}
 		return nb_size;
+	}
+	
+	public int[] revers_tab (int tab[]) {
+		int save_nb;
+		int length = tab.length;
+		int i = 0;
+		
+		while (tab.length/2 < i) {
+			save_nb = tab[length];
+			tab[length] = tab[i];
+			tab[i] = tab[length];
+			i++;
+			length--;
+		}
+		
+		return tab;
+	}
+	
+	public int[][] initialize_pos (int size, int nb) {
+		int tab[][] = new int[size + 1][2];
+		int a = 0;
+		int unit = 0;
+		
+		for (int i = size; i > 0; i--) {
+			unit = find_unit(nb);
+			tab[a][0] = unit;
+			tab[a][1] = a;	
+			nb = (nb - unit) / 10;
+		}
+		
+		return tab;
 	}
 }

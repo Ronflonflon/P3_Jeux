@@ -20,7 +20,8 @@ public class Gamemm {
 		try {
 			System.out.print("Choisissez le nombre de couleurs à deviner : ");
 			size = sc.nextInt();
-			my_computer.nb_to_guess = my_computer.generate_nb_to_guess(size);
+//			my_computer.nb_to_guess = my_computer.generate_nb_to_guess(size);
+			my_computer.nb_to_guess = 9867;
 			my_computer.size_to_guess = calculs.nb_size(my_computer.nb_to_guess);
 			my_computer.tab_to_guess = calculs.create_tab(my_computer.nb_to_guess, my_computer.size_to_guess);
 
