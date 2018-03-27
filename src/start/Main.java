@@ -33,7 +33,8 @@ public class Main {
 			} else {
 				System.out.println("La valeur que vous avez entré semble incorrecte...");
 			}
-		} catch (Exception e) {
+			//TODO Remplacer toutes les exceptions par Exception e
+		} catch (ClassCastException e) {
 			//OK
 			System.out.println("La valeur que vous avez entré semble incorrecte...");
 		}

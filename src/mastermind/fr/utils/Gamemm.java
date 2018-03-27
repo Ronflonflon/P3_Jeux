@@ -20,8 +20,8 @@ public class Gamemm {
 		try {
 			System.out.print("Choisissez le nombre de couleurs à deviner : ");
 			size = sc.nextInt();
-//			my_computer.nb_to_guess = my_computer.generate_nb_to_guess(size);
-			my_computer.nb_to_guess = 9867;
+			//my_computer.nb_to_guess = my_computer.generate_nb_to_guess(size);
+			my_computer.nb_to_guess = 1526;
 			my_computer.size_to_guess = calculs.nb_size(my_computer.nb_to_guess);
 			my_computer.tab_to_guess = calculs.create_tab(my_computer.nb_to_guess, my_computer.size_to_guess);
 
@@ -58,14 +58,40 @@ public class Gamemm {
 		Personmm my_person = new Personmm();
 		Scanner sc = new Scanner(System.in);
 		Comparatormm compar = new Comparatormm();
+		Messagesmm messages = new Messagesmm();
+		Calculsmm calculs = new Calculsmm();
+		int win = 0;
+		int limit = 10;
 		
+		try {
+		System.out.println("Choisissez le nombre à faire deviner : ");
+		my_person.nb_to_guess = sc.nextInt();
+		my_person.tab_to_guess = calculs.create_tab(my_person.nb_to_guess, calculs.nb_size(my_person.nb_to_guess));
+		my_computer.tab_try = my_computer.initialize_result(my_person.tab_to_guess.length);
+		my_computer.proba_result = my_computer.initialize_proba(my_person.tab_to_guess.length, limit);
+		my_computer.last_try = my_computer.tab_try;
+		my_computer.last_placed = 0;
+		my_computer.last_present = 0;
+		my_computer.position = (my_computer.tab_try.length - 1);
+		my_computer.shots = 0;
 		
-		
+		while (win != 1) {
+			my_computer.last_try = my_computer.tab_try;
+			my_computer = compar.defender_tab_compar(my_computer, my_person);
+			my_computer.shots++;
+			if (my_computer.count_placed == my_person.tab_to_guess.length) {
+				win = 1;
+			}
+		}
+		System.out.println("L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
+		} catch (ClassCastException e) {
+			messages.fail_value();
+		}
 		return 0;
 	}
 
 	public int dual_mm(int mode) {
-
+		
 		return 0;
 	}
 }

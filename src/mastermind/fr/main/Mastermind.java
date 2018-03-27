@@ -37,7 +37,7 @@ public class Mastermind {
 			try {
 				messages.restart_game();
 				start = sc.nextInt();
-			} catch (Exception e) {
+			} catch (ClassCastException e) {
 				System.out.println("Valeur start : " + start);
 				messages.fail_value();
 				start = 0;
