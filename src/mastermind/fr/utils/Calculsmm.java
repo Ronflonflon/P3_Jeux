@@ -1,32 +1,31 @@
 package mastermind.fr.utils;
 
 public class Calculsmm {
-	public void trans_nb_word (int value_translate) {
+	public void trans_nb_word(int value_translate) {
 		Messagesmm messages = new Messagesmm();
-		
-		String colors [] = {"gris", "rouge", "vert", "bleu", "jaune", "violet"};
+
+		String colors[] = { "gris", "rouge", "vert", "bleu", "jaune", "violet" };
 		int size = colors.length;
-		
+
 		if (value_translate <= size) {
 			System.out.print(colors[value_translate]);
 		} else {
 			messages.fail_value();
 		}
 	}
-	
-	
+
 	// Bug à prévoir ici.
-	public int trans_word_nb (String word) {
+	public int trans_word_nb(String word) {
 		Messagesmm messages = new Messagesmm();
-		
-		String colors [] = {"gris", "rouge", "vert", "bleu", "jaune", "violet"};
+
+		String colors[] = { "gris", "rouge", "vert", "bleu", "jaune", "violet" };
 		int size = colors.length;
 		int i = 0;
-		
+
 		while (!word.equals(colors[i]) && i <= (size + 1)) {
 			i++;
 		}
-		
+
 		if (i <= size) {
 			return i;
 		} else {
@@ -34,16 +33,16 @@ public class Calculsmm {
 			return 0;
 		}
 	}
-	
-	public int find_unit (int nb) {
+
+	public int find_unit(int nb) {
 		return nb % 10;
 	}
-	
-	public int[] create_tab (int nb, int size) {
+
+	public int[] create_tab(int nb, int size) {
 		int tab[] = new int[size];
 		int max_index = size - 1;
 		int unit = 0;
-		
+
 		for (int i = (size - 1); i >= 0; i--) {
 			unit = find_unit(nb);
 			if (nb <= 0) {
@@ -53,11 +52,11 @@ public class Calculsmm {
 			}
 			nb = (nb - unit) / 10;
 		}
-		
+
 		return tab;
 	}
-	
-	public int nb_size (int nb) {
+
+	public int nb_size(int nb) {
 		int nb_size = 0;
 		while (nb > 0) {
 			nb = nb / 10;
@@ -65,35 +64,35 @@ public class Calculsmm {
 		}
 		return nb_size;
 	}
-	
-	public int[] revers_tab (int tab[]) {
+
+	public int[] revers_tab(int tab[]) {
 		int save_nb;
 		int length = tab.length;
 		int i = 0;
-		
-		while (tab.length/2 < i) {
+
+		while (tab.length / 2 < i) {
 			save_nb = tab[length];
 			tab[length] = tab[i];
 			tab[i] = tab[length];
 			i++;
 			length--;
 		}
-		
+
 		return tab;
 	}
-	
-	public int[][] initialize_pos (int size, int nb) {
+
+	public int[][] initialize_pos(int size, int nb) {
 		int tab[][] = new int[size + 1][2];
 		int a = 0;
 		int unit = 0;
-		
+
 		for (int i = size; i > 0; i--) {
 			unit = find_unit(nb);
 			tab[a][0] = unit;
-			tab[a][1] = a;	
+			tab[a][1] = a;
 			nb = (nb - unit) / 10;
 		}
-		
+
 		return tab;
 	}
 }

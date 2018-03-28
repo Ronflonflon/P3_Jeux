@@ -7,17 +7,17 @@ import mastermind.fr.players.Computermm;
 import mastermind.fr.players.Personmm;
 
 public class Comparatormm {
-	public int challenger_tab_compar(int tab_person[], int tab_computer[]) {
+	public Personmm challenger_tab_compar(Personmm my_person, Computermm my_computer) {
 		Calculsmm calcul = new Calculsmm();
 		int count_placed = 0;
 		int count_present = 0;
 		int j = 0;
 		int k = 0;
-		int forbid_placed[] = new int[tab_person.length];
-		int forbid_present[] = new int[tab_person.length];
+		int forbid_placed[] = new int[my_person.tab_try.length];
+		int forbid_present[] = new int[my_person.tab_try.length];
 
-		for (int i = 0; i < tab_person.length; i++) {
-			if (tab_person[i] == tab_computer[i]) {
+		for (int i = 0; i < my_person.tab_try.length; i++) {
+			if (my_person.tab_try[i] == my_computer.tab_to_guess[i]) {
 				forbid_placed[i] = 1;
 				count_placed++;
 			} else {
@@ -25,9 +25,9 @@ public class Comparatormm {
 			}
 		}
 
-		while (j < tab_person.length) {
-			while (k < tab_computer.length) {
-				if (tab_person[j] == tab_computer[k] && forbid_present[k] == 0) {
+		while (j < my_person.tab_try.length) {
+			while (k < my_computer.tab_to_guess.length) {
+				if (my_person.tab_try[j] == my_computer.tab_to_guess[k] && forbid_present[k] == 0) {
 					if (forbid_placed[k] == 0) {
 						forbid_present[k] = 1;
 						count_present++;
@@ -41,7 +41,13 @@ public class Comparatormm {
 			k = 0;
 			j++;
 		}
-
+		j = 0;
+		System.out.print("Joueur : ");
+		while (j < my_person.tab_try.length) {
+			System.out.print(my_person.tab_try[j]);
+			j++;
+		}
+		System.out.print(" ");
 		if (count_placed == 0 && count_present == 0) {
 			System.out.println("-> Aucune couleur n'est présente)");
 		} else if (count_placed == 0 && count_present > 0) {
@@ -55,7 +61,7 @@ public class Comparatormm {
 			if (count_placed > 1) {
 				System.out.println("-> " + count_placed + " couleurs bien placées");
 			} else {
-				System.out.println("-> " + count_placed + " couleurs bien placée");
+				System.out.println("-> " + count_placed + " couleur bien placée");
 			}
 		} else if (count_placed > 0 && count_present > 0) {
 			System.out.print("-> " + count_placed);
@@ -71,11 +77,13 @@ public class Comparatormm {
 				System.out.println(" présente");
 			}
 		}
-		if (count_placed == tab_computer.length) {
-			return 1;
+		if (count_placed == my_computer.tab_to_guess.length) {
+			my_person.win = true;
 		} else {
-			return 0;
+			my_person.win = false;
 		}
+		
+		return my_person;
 	}
 
 	public Computermm defender_tab_compar(Computermm my_computer, Personmm my_person) {
@@ -113,7 +121,7 @@ public class Comparatormm {
 			j++;
 		}
 		j = 0;
-		System.out.print("Combinaison tentée : ");
+		System.out.print("Ordinateur : ");
 		while (j < my_computer.tab_try.length) {
 			System.out.print(my_computer.tab_try[j]);
 			j++;

@@ -49,8 +49,6 @@ public class Comparatorpom {
 		my_person.size = calcul.nb_size(my_computer.nb_to_guess);
 		my_computer.size = calcul.nb_size(my_computer.nb_to_guess);
 		
-		//System.out.println("Nb to guess" + my_person.tab_to_guess.get(0));
-		
 		for (int i = (my_person.tab_to_guess.size() - 1); i >= 0 ; i--) {
 			
 			if ((int) my_person.tab_to_guess.get(i) < (int) my_computer.tab_try.get(i)) {

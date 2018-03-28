@@ -8,6 +8,7 @@ public class Playermm {
 	public int size_try;
 	public int size_to_guess;
 	public int shots;
+	public boolean win;
 	
 	public int nb_size (int nb) {
 		int nb_size = 0;
