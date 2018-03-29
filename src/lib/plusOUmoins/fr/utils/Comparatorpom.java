@@ -7,7 +7,7 @@ import lib.plusOUmoins.fr.players.*;
 import lib.plusOUmoins.fr.utils.Calculspom;
 
 public class Comparatorpom {
-	int compar_numbers_challenger (Computerpom my_computer, Personpom my_person) {
+	public int compar_numbers_challenger (Computerpom my_computer, Personpom my_person) {
 		int good_shot = 0;
 		Calculspom calcul = new Calculspom();
 		
@@ -43,7 +43,7 @@ public class Comparatorpom {
 	}
 	
 	@SuppressWarnings("unchecked")
-	int compar_numbers_defender (Computerpom my_computer, Personpom my_person) {
+	public int compar_numbers_defender (Computerpom my_computer, Personpom my_person) {
 		int good_shot = 0;
 		Calculspom calcul = new Calculspom();
 		

@@ -1,5 +1,7 @@
 package lib.mastermind.fr.utils;
 
+import java.util.Random;
+
 public class Calculsmm {
 	public void trans_nb_word(int value_translate) {
 		Messagesmm messages = new Messagesmm();
@@ -42,7 +44,6 @@ public class Calculsmm {
 		int tab[] = new int[size];
 		int max_index = size - 1;
 		int unit = 0;
-
 		for (int i = (size - 1); i >= 0; i--) {
 			unit = find_unit(nb);
 			if (nb <= 0) {
@@ -56,7 +57,18 @@ public class Calculsmm {
 		return tab;
 	}
 
-	public int nb_size(int nb) {
+	public int[] create_tab_computer(int size, int limit_color) {
+		int tab[] = new int[size];
+		Random randomGenerator = new Random();
+
+		for (int i = (size - 1); i >= 0; i--) {
+			tab[i] = randomGenerator.nextInt(limit_color);
+		}
+
+		return tab;
+	}
+
+	public int nb_size(long nb) {
 		int nb_size = 0;
 		while (nb > 0) {
 			nb = nb / 10;
@@ -94,5 +106,25 @@ public class Calculsmm {
 		}
 
 		return tab;
+	}
+	
+	public boolean verify_tab_try(int nb, int limit_color) {
+		int size = nb_size(nb);
+		int unit = 0;
+		int forbid = 0;
+		
+		for (int i = (size - 1); i >= 0; i--) {
+			unit = find_unit(nb);
+			if (unit < 0 || unit >= limit_color) {
+				forbid++;
+			}
+			nb = (nb - unit) / 10;
+		}
+		
+		if (forbid > 0) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }

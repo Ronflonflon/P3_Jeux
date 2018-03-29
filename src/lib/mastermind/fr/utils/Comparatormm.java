@@ -49,7 +49,7 @@ public class Comparatormm {
 		}
 		System.out.print(" ");
 		if (count_placed == 0 && count_present == 0) {
-			System.out.println("-> Aucune couleur n'est présente)");
+			System.out.println("-> Aucune couleur n'est présente");
 		} else if (count_placed == 0 && count_present > 0) {
 			if (count_present > 1) {
 				System.out.println("-> " + count_present + " couleurs présentes");

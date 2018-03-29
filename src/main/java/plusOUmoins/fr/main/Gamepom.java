@@ -1,12 +1,16 @@
-package lib.plusOUmoins.fr.utils;
+package main.java.plusOUmoins.fr.main;
 
 import java.util.Scanner;
 
+import lib.main.Config;
 import lib.plusOUmoins.fr.players.Computerpom;
 import lib.plusOUmoins.fr.players.Personpom;
+import lib.plusOUmoins.fr.utils.Calculspom;
+import lib.plusOUmoins.fr.utils.Comparatorpom;
+import lib.plusOUmoins.fr.utils.Messagespom;
 
 public class Gamepom {
-	public int challenger_pom(int dev) {
+	public int challenger_pom(Config config) {
 		Calculspom calcul = new Calculspom();
 		Comparatorpom compar = new Comparatorpom();
 		Personpom my_person = new Personpom();
@@ -16,35 +20,36 @@ public class Gamepom {
 		int win = 0;
 
 		try {
-			messages.choose_size();
-			my_computer.size = sc.nextInt();
-			if (my_computer.size <= 0) {
-				System.out.println("La taille " + my_computer.size + " n'est pas valide...");
-			} else {
-				my_computer.nb_to_guess = my_computer.generate_nb_to_guess(my_computer.size);
-				my_computer.size = calcul.nb_size(my_computer.nb_to_guess);
-				
-				if (dev == 1) {
-					System.out.println("Le nombre de l'ordinateur est " + my_computer.nb_to_guess);
-				}
-		
-				while (win == 0) {
-					System.out.print("Choisi un nombre contenant " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres : ");
-					my_person.nb_try = sc.nextInt();
-					if (my_person.nb_try < 0) {
-						messages.fail_value();
+			my_computer.nb_to_guess = my_computer.generate_nb_to_guess(config.nb_case);
+			my_computer.size = calcul.nb_size(my_computer.nb_to_guess);
+
+			if (config.dev == 1) {
+				System.out.println("Le nombre de l'ordinateur est " + my_computer.nb_to_guess);
+			}
+
+			while (win == 0 && my_person.shots < config.limit_of_try) {
+				System.out.println("Nombre d'essaie(s) restant(s) : " + (config.limit_of_try - my_person.shots));
+				System.out.print("Choisi un nombre contenant " + config.nb_case + " chiffres : ");
+				my_person.nb_try = sc.nextInt();
+				if (my_person.nb_try < 0) {
+					messages.fail_value();
+				} else {
+					
+					if (calcul.nb_size(my_computer.nb_to_guess) >= calcul.nb_size(my_person.nb_try)) {
+						win = compar.compar_numbers_challenger(my_computer, my_person);
+						my_person.shots++;
 					} else {
-						if (calcul.nb_size(my_computer.nb_to_guess) >= calcul.nb_size(my_person.nb_try)) {
-							win = compar.compar_numbers_challenger(my_computer, my_person);
-							my_person.shots++;
-						} else {
-							System.out
-									.println("Le nombre doit contenir " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres !");
-						}
+						System.out.println(
+								"Le nombre doit contenir " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres !");
 					}
 				}
-		
-				System.out.println("Code dévérouillé en " + my_person.shots + " coups, bravo !");
+			}
+
+			if (my_person.shots < config.limit_of_try) {
+				System.out.println("Gagné ! Code dévérouillé en " + my_person.shots + " coups, bravo !");
+			} else {
+				System.out.println("Perdu ! Vous n'avez pas réussi à dévérouiller le code en moins de "
+						+ config.limit_of_try + " coups !");
 			}
 		} catch (Exception e) {
 			messages.fail_value();
@@ -52,7 +57,7 @@ public class Gamepom {
 		return win;
 	}
 
-	public int defender_pom(int dev) {
+	public int defender_pom(Config config) {
 		Personpom my_person = new Personpom();
 		Calculspom calcul = new Calculspom();
 		Comparatorpom compar = new Comparatorpom();
@@ -63,22 +68,30 @@ public class Gamepom {
 		try {
 			messages.choose_nb();
 			my_person.nb_to_guess = sc.nextInt();
-			
+
 			if (my_person.nb_to_guess <= 0) {
-				System.out.println("Le nombre ne peut pas être " + my_person.nb_to_guess + ", il doit être supérieur à 0");
+				System.out.println(
+						"Le nombre ne peut pas être " + my_person.nb_to_guess + ", il doit être supérieur à 0");
 			} else {
 				Computerpom my_computer = new Computerpom();
 				my_computer.size = my_person.size = calcul.nb_size(my_person.nb_to_guess);
 				my_person.tab_to_guess = calcul.create_tab(my_person, my_person.nb_to_guess);
-		
+
 				my_computer = my_computer.initialize_compute_tabs(my_computer);
-		
+
 				while (win == 0) {
 					win = compar.compar_numbers_defender(my_computer, my_person);
 					my_computer.shots++;
 				}
-		
-				System.out.println("L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
+
+				if (my_computer.shots < config.limit_of_try) {
+					System.out
+							.println("Perdu ! L'ordinateur a dévérouillé le code en " + my_computer.shots + " coups !");
+				} else {
+					System.out.println("Gagné ! L'ordinateur n'a pas réussi a dévérouiller le code en + "
+							+ config.limit_of_try + " coups !");
+				}
+
 			}
 		} catch (Exception e) {
 			messages.fail_value();
@@ -86,7 +99,7 @@ public class Gamepom {
 		return win;
 	}
 
-	public int dual_pom(int dev) {
+	public int dual_pom(Config config) {
 		Calculspom calcul = new Calculspom();
 		Comparatorpom compar = new Comparatorpom();
 		Personpom my_person = new Personpom();
@@ -101,34 +114,38 @@ public class Gamepom {
 			messages.choose_nb();
 			my_person.nb_to_guess = sc.nextInt();
 			if (my_person.nb_to_guess <= 0) {
-				System.out.println("Le nombre ne peut pas être " + my_person.nb_to_guess + ", il doit être supérieur à 0");
+				System.out.println(
+						"Le nombre ne peut pas être " + my_person.nb_to_guess + ", il doit être supérieur à 0");
 			} else {
 				my_computer.size = my_person.size = calcul.nb_size(my_person.nb_to_guess);
 				my_person.tab_to_guess = calcul.create_tab(my_person, my_person.nb_to_guess);
 				my_computer = my_computer.initialize_compute_tabs(my_computer);
-		
+
 				my_computer.nb_to_guess = my_computer.generate_nb_to_guess(my_person.size);
-				
-				if (dev == 1) {
+
+				if (config.dev == 1) {
 					System.out.println("Le nombre de l'ordinateur est " + my_computer.nb_to_guess);
 				}
-		
+
 				while (win_person == 0 && win_computer == 0) {
-					System.out.print("Choisi un nombre contenant " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres : ");
+					System.out.println("Nombre d'essaie(s) restant(s) : " + (config.limit_of_try - my_person.shots));
+					System.out.print(
+							"Choisi un nombre contenant " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres : ");
 					my_person.nb_try = resp.nextInt();
 					if (my_person.nb_try < 0) {
 						messages.fail_value();
 					} else {
 						if (my_person.nb_try <= 0) {
-							System.out.println("Le nombre ne peut pas être " + my_person.nb_try + ", il doit être supérieur à 0");
+							System.out.println(
+									"Le nombre ne peut pas être " + my_person.nb_try + ", il doit être supérieur à 0");
 						} else {
 							if (calcul.nb_size(my_computer.nb_to_guess) >= calcul.nb_size(my_person.nb_try)) {
 								System.out.print("Resultat joueur : ");
 								win_person = compar.compar_numbers_challenger(my_computer, my_person);
 								my_person.shots++;
 							} else {
-								System.out
-										.println("Le nombre doit contenir " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres !");
+								System.out.println("Le nombre doit contenir " + calcul.nb_size(my_computer.nb_to_guess)
+										+ " chiffres !");
 							}
 							System.out.print("Résultat ordinateur : ");
 							win_computer = compar.compar_numbers_defender(my_computer, my_person);
@@ -136,7 +153,7 @@ public class Gamepom {
 						}
 					}
 				}
-		
+
 				if (win_person == 1 && win_computer == 1) {
 					System.out.println("Egalité !");
 				} else if (win_computer == 1) {
