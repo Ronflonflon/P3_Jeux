@@ -1,4 +1,4 @@
-package lib.mastermind.fr.players;
+package main.java.mastermind.fr.players;
 
 public class Playermm {
 	public int nb_to_guess;

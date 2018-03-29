@@ -3,11 +3,11 @@ package main.java.plusOUmoins.fr.main;
 import java.util.Scanner;
 
 import lib.main.Config;
-import lib.plusOUmoins.fr.players.Computerpom;
-import lib.plusOUmoins.fr.players.Personpom;
 import lib.plusOUmoins.fr.utils.Calculspom;
 import lib.plusOUmoins.fr.utils.Comparatorpom;
 import lib.plusOUmoins.fr.utils.Messagespom;
+import main.java.plusOUmoins.fr.players.Computerpom;
+import main.java.plusOUmoins.fr.players.Personpom;
 
 public class Gamepom {
 	public int challenger_pom(Config config) {

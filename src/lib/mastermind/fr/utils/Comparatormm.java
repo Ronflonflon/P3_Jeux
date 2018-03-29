@@ -3,8 +3,8 @@ package lib.mastermind.fr.utils;
 import java.util.LinkedList;
 import java.util.List;
 
-import lib.mastermind.fr.players.Computermm;
-import lib.mastermind.fr.players.Personmm;
+import main.java.mastermind.fr.players.Computermm;
+import main.java.mastermind.fr.players.Personmm;
 
 public class Comparatormm {
 	public Personmm challenger_tab_compar(Personmm my_person, Computermm my_computer) {

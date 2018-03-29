@@ -3,11 +3,11 @@ package main.java.mastermind.fr.main;
 import java.util.Scanner;
 
 import lib.main.Config;
-import lib.mastermind.fr.players.Computermm;
-import lib.mastermind.fr.players.Personmm;
 import lib.mastermind.fr.utils.Calculsmm;
 import lib.mastermind.fr.utils.Comparatormm;
 import lib.mastermind.fr.utils.Messagesmm;
+import main.java.mastermind.fr.players.Computermm;
+import main.java.mastermind.fr.players.Personmm;
 
 public class Gamemm {
 	public int challenger_mm(Config config) {

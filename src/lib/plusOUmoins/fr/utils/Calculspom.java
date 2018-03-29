@@ -3,7 +3,7 @@ package lib.plusOUmoins.fr.utils;
 import java.util.LinkedList;
 import java.util.List;
 
-import lib.plusOUmoins.fr.players.Playerpom;
+import main.java.plusOUmoins.fr.players.Playerpom;
 
 public class Calculspom {
 	public int generate_divisor (int nb) {

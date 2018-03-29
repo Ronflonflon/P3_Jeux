@@ -1,4 +1,4 @@
-package lib.plusOUmoins.fr.players;
+package main.java.plusOUmoins.fr.players;
 
 import java.util.LinkedList;
 import java.util.List;

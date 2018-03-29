@@ -3,8 +3,8 @@ package lib.plusOUmoins.fr.utils;
 import java.util.LinkedList;
 import java.util.List;
 
-import lib.plusOUmoins.fr.players.*;
 import lib.plusOUmoins.fr.utils.Calculspom;
+import main.java.plusOUmoins.fr.players.*;
 
 public class Comparatorpom {
 	public int compar_numbers_challenger (Computerpom my_computer, Personpom my_person) {
