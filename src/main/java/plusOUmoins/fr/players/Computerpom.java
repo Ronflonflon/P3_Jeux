@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
 
-import lib.plusOUmoins.fr.utils.Calculspom;
+import main.java.plusOUmoins.fr.utils.Calculspom;
 
 public class Computerpom extends Playerpom {
 	public List min;
