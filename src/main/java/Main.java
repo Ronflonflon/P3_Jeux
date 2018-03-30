@@ -14,6 +14,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		Plusoumoins party_pom = new Plusoumoins();
 		Mastermind party_mm = new Mastermind();
+		Messages message = new Messages();
 		int start = 1;
 		int game = 0;
 		
@@ -32,10 +33,7 @@ public class Main {
 				
 				try {
 					while (start == 1) {
-						System.out.println("==============================");
-						System.out.println("1 - Plus ou moins");
-						System.out.println("2 - Mastermind");
-						System.out.print("Sélectionne le jeu auquel tu souhaites jouer : ");
+						message.choose_game();
 						game = sc.nextInt();
 						
 						if (game == 1) {
@@ -46,14 +44,14 @@ public class Main {
 							party_mm.Mastermind(config);
 						} else {
 							logger.trace("Une valeur entrée est incorrecte, game = " + game);
-							System.out.println("La valeur que vous avez entré semble incorrecte...");
+							message.fail_value();
 						}
 						System.out.print("Voulez-vous rejouer (1 pour oui, 0 pour non) : ");
 						start = sc.nextInt();
 					}
 				} catch (Exception e) {
 					logger.trace("Une valeur entrée est incorrecte");
-					System.out.println("La valeur que vous avez entré semble incorrecte...");
+					message.fail_value();
 				}
 
 			} else {
@@ -61,7 +59,7 @@ public class Main {
 			}
 		} catch (Exception e) {
 			logger.trace("Une valeur entrée est incorrecte");
-			System.out.println("Un problème s'est produit... (Avez-vous entré une valeur incorrecte ?)");
+			message.fail_value();
 		}
 
 		System.out.println("Au revoir !");

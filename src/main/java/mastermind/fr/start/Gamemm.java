@@ -96,17 +96,23 @@ public class Gamemm {
 		Calculsmm calculs = new Calculsmm();
 		my_computer.win = false;
 		int limit = 10;
+		int enter_valid = 0;
 		my_person.nb_to_guess = -1;
 
 		try {
-			while (my_person.nb_to_guess <= 0) {
+			while (my_person.nb_to_guess <= 0 || enter_valid == 0) {
 				System.out.println("Choisissez le nombre à faire deviner : ");
 				my_person.nb_to_guess = sc.nextInt();
 				if (my_person.nb_to_guess <= 0) {
 					System.out.println("Le nombre indiqué est trop petit !");
 				}
+				if (calculs.verify_tab_try(my_person.nb_to_guess, config.limit_color) == true) {
+					enter_valid = 1;
+				} else {
+					System.out.println(
+							"Seuls des chiffres compris entre 0 et " + (config.limit_color - 1) + " sont autorisés !");
+				}
 			}
-			my_person.tab_to_guess = calculs.create_tab(my_person.nb_to_guess, calculs.nb_size(my_person.nb_to_guess));
 			my_computer.tab_try = my_computer.initialize_result(my_person.tab_to_guess.length);
 			my_computer.proba_result = my_computer.initialize_proba(my_person.tab_to_guess.length, limit);
 			my_computer.last_try = my_computer.tab_try;
@@ -128,7 +134,7 @@ public class Gamemm {
 				logger.trace("Perdu ! L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
 				System.out.println("Perdu ! L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
 			} else {
-				System.out.println("Gagné ! L'ordinateur n'a pas réussi à trouvé la combinaison en moins de "
+				logger.trace("Gagné ! L'ordinateur n'a pas réussi à trouvé la combinaison en moins de "
 						+ config.limit_of_try + " coups !");
 				System.out.println("Gagné ! L'ordinateur n'a pas réussi à trouvé la combinaison en moins de "
 						+ config.limit_of_try + " coups !");
@@ -157,24 +163,32 @@ public class Gamemm {
 		int win = 0;
 		int limit = 10;
 		int size;
+		int enter_valid = 0;
 		my_person.win = my_computer.win = false;
 		my_person.shots = 0;
 		my_person.nb_try = -1;
 		my_person.nb_to_guess = -1;
 
+		System.out.println("Il y a " + config.limit_color + " couleurs possibles de 0 à " + (config.limit_color - 1));
+
 		try {
-			while (my_person.nb_to_guess <= 0) {
+			while (my_person.nb_to_guess <= 0 || enter_valid == 0) {
 				System.out.println("Choisissez le nombre à faire deviner : ");
 				my_person.nb_to_guess = sc.nextInt();
 				if (my_person.nb_to_guess <= 0) {
 					System.out.println("Le nombre indiqué est trop petit !");
 				}
+				if (calculs.verify_tab_try(my_person.nb_to_guess, config.limit_color) == true) {
+					enter_valid = 1;
+				} else {
+					System.out.println(
+							"Seuls des chiffres compris entre 0 et " + (config.limit_color - 1) + " sont autorisés !");
+				}
 			}
-			size = calculs.nb_size(my_person.nb_to_guess);
+			size = config.nb_case;
 			my_person.tab_to_guess = calculs.create_tab(my_person.nb_to_guess, size);
-			my_computer.nb_to_guess = my_computer.generate_nb_to_guess(size);
 			my_computer.size_to_guess = calculs.nb_size(my_computer.nb_to_guess);
-			my_computer.tab_to_guess = calculs.create_tab(my_computer.nb_to_guess, size);
+			my_computer.tab_to_guess = calculs.create_tab_computer(config.nb_case, config.limit_color);
 			my_computer.tab_try = my_computer.initialize_result(size);
 			my_computer.proba_result = my_computer.initialize_proba(size, limit);
 			my_computer.last_try = my_computer.tab_try;
@@ -184,14 +198,20 @@ public class Gamemm {
 			my_computer.shots = 0;
 
 			if (config.dev == 1) {
-				System.out.println("Nombre de l'ordinateur : " + my_computer.nb_to_guess);
+				System.out.print("Nombre de l'ordinteur ");
+				for (int i = 0; i < my_computer.tab_to_guess.length; i++) {
+					System.out.print(my_computer.tab_to_guess[i]);
+				}
+				System.out.println();
 			}
 
 			while (my_person.win == false && my_computer.win == false && my_person.shots < config.limit_of_try
 					&& my_computer.shots < config.limit_of_try) {
+				System.out.println("Nombre d'essaie(s) restant(s) : " + (config.limit_of_try - my_person.shots));
 				System.out.print("Tentez de trouver la combinaison : ");
 				my_person.nb_try = sc.nextInt();
-				if (my_person.nb_try >= 0) {
+				if (my_person.nb_try >= 0
+						&& calculs.verify_tab_try(my_person.nb_try, config.limit_color) == true) {
 					my_person.size_try = calculs.nb_size(my_person.nb_try);
 					my_person.tab_try = calculs.create_tab(my_person.nb_try, size);
 
@@ -209,7 +229,8 @@ public class Gamemm {
 						my_computer.win = true;
 					}
 				} else {
-					System.out.println("Le nombre indiqué est trop petit !");
+					System.out.println(
+							"Seuls des chiffres compris entre 0 et " + (config.limit_color - 1) + " sont autorisés !");
 				}
 			}
 

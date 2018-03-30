@@ -13,10 +13,6 @@ public class Messagesmm {
 		System.out.println("La valeur que vous avez entré semble incorrecte");
 	}
 
-	public void restart_game() {
-		System.out.println("Voulez-vous rejouer (1 = Oui, 2 = Non) : ");
-	}
-
 	public void choose_size() {
 		System.out.print("Choisi la taille du nombre à deviner : ");
 	}
