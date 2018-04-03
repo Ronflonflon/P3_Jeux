@@ -13,8 +13,6 @@ public class Config {
 	public int nb_case;
 	
 	public Config() {
-		dev = 0;
-		
 		Properties prop = new Properties();
 		InputStream input = null;
 		
@@ -25,6 +23,7 @@ public class Config {
 		} catch (IOException e) {
 			System.out.println("Un problème a été rencontré lors de la lecture du fichier de configurations !");
 		}
+		this.dev = Integer.parseInt(prop.getProperty("dev"));
 		this.limit_color = Integer.parseInt(prop.getProperty("limit_color"));
 		this.limit_of_try = Integer.parseInt(prop.getProperty("limit_of_try"));
 		this.nb_case = Integer.parseInt(prop.getProperty("nb_case"));

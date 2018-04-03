@@ -84,7 +84,7 @@ public class Comparatormm {
 			}
 			System.out.print(count_present);
 			if (count_present > 1) {
-				System.out.println(" prétentes");
+				System.out.println(" présentes");
 			} else {
 				System.out.println(" présente");
 			}
@@ -176,14 +176,22 @@ public class Comparatormm {
 			}
 			System.out.print(my_computer.count_present);
 			if (my_computer.count_present > 1) {
-				System.out.println(" prétentes");
+				System.out.println(" présentes");
 			} else {
 				System.out.println(" présente");
 			}
 		}
 		my_computer.last_try = my_computer.tab_try;
-		my_computer = my_computer.generate_tab_try(my_computer);
-		my_computer.last_placed = my_computer.count_placed;
+		if (my_computer.first_start == true) {
+			my_computer.last_placed = my_computer.count_placed;
+			my_computer = my_computer.generate_tab_try(my_computer, my_person);
+			my_computer.first_start = false;
+		} else {
+			my_computer = my_computer.generate_tab_try(my_computer, my_person);
+			my_computer.last_placed = my_computer.count_placed;
+			
+		}
+		
 		my_computer.last_present = my_computer.count_present;
 
 		logger.trace("Nombre de chiffres bien placés : " + my_computer.count_placed + " et nombre de chiffres présents "

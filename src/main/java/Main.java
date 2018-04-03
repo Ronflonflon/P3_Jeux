@@ -23,12 +23,7 @@ public class Main {
 		
 		try {
 			Config config = new Config();
-			config.dev = 0;
-			if (config.limit_color >= 4 && config.limit_color <= 10 && config.nb_case <= 8) {
-				while (config.dev != 1 && config.dev != 2) {
-					System.out.print("Voulez-vous être en mode développeur ? (1 = Oui, 2 = Non) : ");
-					config.dev = sc.nextInt();
-				}
+			if ((config.limit_color >= 4 && config.limit_color <= 10) && (config.nb_case <= 8 && config.nb_case >= 4)) {
 				logger.trace("Mode développer choisi : " + config.dev);
 				
 				try {
@@ -49,7 +44,7 @@ public class Main {
 						System.out.print("Voulez-vous rejouer (1 pour oui, 0 pour non) : ");
 						start = sc.nextInt();
 					}
-				} catch (Exception e) {
+				} catch (ClassCastException e) {
 					logger.trace("Une valeur entrée est incorrecte");
 					message.fail_value();
 				}
@@ -57,7 +52,7 @@ public class Main {
 			} else {
 				System.out.println("Un problème s'est produit dans le fichier de configuration, vérifiez les valeurs indiquées");
 			}
-		} catch (Exception e) {
+		} catch (ClassCastException e) {
 			logger.trace("Une valeur entrée est incorrecte");
 			message.fail_value();
 		}

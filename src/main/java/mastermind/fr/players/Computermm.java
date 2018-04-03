@@ -2,6 +2,8 @@ package main.java.mastermind.fr.players;
 
 import java.util.Random;
 
+import com.oracle.xmlns.internal.webservices.jaxws_databinding.SoapBindingUse;
+
 public class Computermm extends Playermm {
 	public int last_try[];
 	public int proba_result[][];
@@ -10,27 +12,37 @@ public class Computermm extends Playermm {
 	public int last_present;
 	public int last_placed;
 	public int position;
+	public boolean first_start;
 	int i = 0;
 
-	public Computermm generate_tab_try(Computermm my_computer) {
+	public Computermm generate_tab_try(Computermm my_computer, Personmm my_person) {
 		int i = 0;
-		
-		if (my_computer.count_placed < my_computer.last_placed) {
-			while (my_computer.tab_try[i] == my_computer.last_try[i] && i < my_computer.tab_try.length) {
+
+		/*
+		 * for (int a = 0; a < my_computer.tab_try.length; a++) {
+		 * System.out.println("a = " + a + " Valeur : " + my_computer.tab_try[a]); }
+		 */
+		//System.out.println(my_computer.count_placed + " et " + my_computer.last_placed);
+		if (my_computer.count_placed < my_computer.last_placed || my_computer.count_placed > my_computer.last_placed) {
+			while (i < my_computer.tab_try.length && my_computer.tab_try[i] == my_computer.last_try[i]) {
+				// System.out.println("a = " + i + " tab_try = " + my_computer.tab_try[i] + " et
+				// " + my_computer.last_try[i]);
 				i++;
 			}
+			i--;
+			//System.out.println("On entre");
 			proba_result[i][my_computer.last_try[i]] = 1;
 			my_computer.position--;
-		} else if (my_computer.count_placed > my_computer.last_placed) {
-			while (my_computer.tab_try[i] == my_computer.last_try[i] && i < (my_computer.tab_try.length - 1)) {
-				i++;
-			}
-			proba_result[i][my_computer.tab_try[i]] = 1;
-			my_computer.position--;
 		} else {
-			my_computer.tab_try[my_computer.position]++; 
+			if (my_computer.first_start == true 
+					&& my_computer.tab_try[my_computer.tab_try.length - 1] == my_person.tab_to_guess[my_person.tab_to_guess.length - 1]) {
+				proba_result[my_computer.tab_try.length - 1][my_computer.last_try[my_computer.tab_try.length - 1]] = 1;
+				my_computer.position--;
+			}
+			my_computer.tab_try[my_computer.position]++;
+			//System.out.println("Par là = " + my_computer.position);
 		}
-		
+
 		return my_computer;
 	}
 

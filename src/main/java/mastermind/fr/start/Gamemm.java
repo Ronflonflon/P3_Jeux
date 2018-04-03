@@ -34,7 +34,7 @@ public class Gamemm {
 		int size = 0;
 		my_person.win = false;
 		my_person.shots = 0;
-
+		
 		try {
 			my_computer.tab_to_guess = calculs.create_tab_computer(config.nb_case, config.limit_color);
 			if (config.dev == 1) {
@@ -49,7 +49,7 @@ public class Gamemm {
 					.println("Il y a " + config.limit_color + " couleurs possibles de 0 à " + (config.limit_color - 1));
 
 			while (my_person.win == false && my_person.shots < config.limit_of_try) {
-				System.out.println("Nombre d'essaie(s) restant(s) : " + (config.limit_of_try - my_person.shots));
+				System.out.println("Nombre d'essai(s) restant(s) : " + (config.limit_of_try - my_person.shots));
 				System.out.print("Tentez de trouver la combinaison : ");
 				my_person.nb_try = sc.nextInt();
 				if (my_person.nb_try >= 0 && calculs.verify_tab_try(my_person.nb_try, config.limit_color)) {
@@ -95,7 +95,6 @@ public class Gamemm {
 		Messagesmm messages = new Messagesmm();
 		Calculsmm calculs = new Calculsmm();
 		my_computer.win = false;
-		int limit = 10;
 		int enter_valid = 0;
 		my_person.nb_to_guess = -1;
 
@@ -113,14 +112,32 @@ public class Gamemm {
 							"Seuls des chiffres compris entre 0 et " + (config.limit_color - 1) + " sont autorisés !");
 				}
 			}
-			my_computer.tab_try = my_computer.initialize_result(my_person.tab_to_guess.length);
-			my_computer.proba_result = my_computer.initialize_proba(my_person.tab_to_guess.length, limit);
+			my_person.tab_to_guess = calculs.create_tab(my_person.nb_to_guess, config.nb_case);
+			my_computer.tab_try = my_computer.initialize_result(config.nb_case);
+			my_computer.proba_result = my_computer.initialize_proba(config.nb_case, config.limit_color);
 			my_computer.last_try = my_computer.tab_try;
 			my_computer.last_placed = 0;
 			my_computer.last_present = 0;
-			my_computer.position = (my_computer.tab_try.length - 1);
+			my_computer.position = (config.nb_case - 1);
 			my_computer.shots = 0;
-
+			my_computer.first_start = true;
+			
+			System.out.println("===================");
+			System.out.print("Joueurnmbr : ");
+			
+			for (int a = 0; a < my_person.tab_to_guess.length; a++) {
+				System.out.print(my_person.tab_to_guess[a]);
+			}
+			System.out.println();
+			
+			/*
+			System.out.print("Chiffre : ");
+			for (int a = 0; a < my_computer.tab_try.length; a++) {
+				System.out.print(my_computer.tab_try[a]);
+			}
+			System.out.println();
+			*/
+			
 			while (my_computer.win == false && my_computer.shots < config.limit_of_try) {
 				my_computer.last_try = my_computer.tab_try;
 				my_computer = compar.defender_tab_compar(my_computer, my_person);
@@ -129,7 +146,7 @@ public class Gamemm {
 					my_computer.win = true;
 				}
 			}
-
+			
 			if (my_computer.shots < config.limit_of_try) {
 				logger.trace("Perdu ! L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
 				System.out.println("Perdu ! L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
@@ -207,7 +224,7 @@ public class Gamemm {
 
 			while (my_person.win == false && my_computer.win == false && my_person.shots < config.limit_of_try
 					&& my_computer.shots < config.limit_of_try) {
-				System.out.println("Nombre d'essaie(s) restant(s) : " + (config.limit_of_try - my_person.shots));
+				System.out.println("Nombre d'essai(s) restant(s) : " + (config.limit_of_try - my_person.shots));
 				System.out.print("Tentez de trouver la combinaison : ");
 				my_person.nb_try = sc.nextInt();
 				if (my_person.nb_try >= 0

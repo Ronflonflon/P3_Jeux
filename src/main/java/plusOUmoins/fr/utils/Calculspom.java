@@ -5,6 +5,7 @@ import java.util.List;
 
 import main.java.plusOUmoins.fr.players.Playerpom;
 
+
 public class Calculspom {
 	public int generate_divisor (int nb) {
 		int divisor = 1;
@@ -13,9 +14,7 @@ public class Calculspom {
 		while (nb_size > 1) {
 			divisor *= 10;
 			nb_size--;
-			//System.out.println("Vroum : " + nb_size);
 		}
-		//System.out.println(divisor);
 		return divisor;
 	}
 	
