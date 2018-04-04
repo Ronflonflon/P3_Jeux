@@ -189,9 +189,9 @@ public class Comparatormm {
 		} else {
 			my_computer = my_computer.generate_tab_try(my_computer, my_person);
 			my_computer.last_placed = my_computer.count_placed;
-			
+
 		}
-		
+
 		my_computer.last_present = my_computer.count_present;
 
 		logger.trace("Nombre de chiffres bien placés : " + my_computer.count_placed + " et nombre de chiffres présents "

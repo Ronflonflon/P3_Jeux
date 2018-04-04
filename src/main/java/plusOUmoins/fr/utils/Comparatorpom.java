@@ -28,13 +28,9 @@ public class Comparatorpom {
 				System.out.print("=");
 				good_shot++;
 			}
-			if (my_computer.nb_to_guess == 0 || my_person.nb_try == 0) {
-				my_computer.nb_to_guess = -1;
-				my_person.nb_try = -1;
-			}
 		}
 		System.out.println();
-		
+		System.out.println("good shots = " + good_shot + " et " + calcul.nb_size(my_computer.nb_to_guess));
 		if(good_shot >= calcul.nb_size(my_computer.nb_to_guess)) {
 			return 1;
 		} else {

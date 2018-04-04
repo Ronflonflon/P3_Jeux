@@ -35,9 +35,9 @@ public class Gamepom {
 				if (my_person.nb_try < 0) {
 					messages.fail_value();
 				} else {
-					
 					if (calcul.nb_size(my_computer.nb_to_guess) >= calcul.nb_size(my_person.nb_try)) {
 						win = compar.compar_numbers_challenger(my_computer, my_person);
+						System.out.println("win = " + win);
 						my_person.shots++;
 					} else {
 						System.out.println(

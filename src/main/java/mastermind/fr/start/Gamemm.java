@@ -122,12 +122,6 @@ public class Gamemm {
 			my_computer.shots = 0;
 			my_computer.first_start = true;
 			
-			System.out.println("===================");
-			System.out.print("Joueurnmbr : ");
-			
-			for (int a = 0; a < my_person.tab_to_guess.length; a++) {
-				System.out.print(my_person.tab_to_guess[a]);
-			}
 			System.out.println();
 			
 			/*
@@ -157,7 +151,7 @@ public class Gamemm {
 						+ config.limit_of_try + " coups !");
 			}
 
-		} catch (ClassCastException e) {
+		} catch (Exception e) {
 			messages.fail_value();
 		}
 	}
@@ -269,7 +263,7 @@ public class Gamemm {
 								+ config.limit_of_try + " coups !");
 			}
 
-		} catch (ClassCastException e) {
+		} catch (Exception e) {
 			messages.fail_value();
 		}
 	}

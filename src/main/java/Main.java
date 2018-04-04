@@ -22,7 +22,7 @@ public class Main {
 		logger.trace("Entré dans le jeu");
 		
 		try {
-			Config config = new Config();
+			Config config = new Config(args);
 			if ((config.limit_color >= 4 && config.limit_color <= 10) && (config.nb_case <= 8 && config.nb_case >= 4)) {
 				logger.trace("Mode développer choisi : " + config.dev);
 				
@@ -44,7 +44,7 @@ public class Main {
 						System.out.print("Voulez-vous rejouer (1 pour oui, 0 pour non) : ");
 						start = sc.nextInt();
 					}
-				} catch (ClassCastException e) {
+				} catch (Exception e) {
 					logger.trace("Une valeur entrée est incorrecte");
 					message.fail_value();
 				}
@@ -52,7 +52,7 @@ public class Main {
 			} else {
 				System.out.println("Un problème s'est produit dans le fichier de configuration, vérifiez les valeurs indiquées");
 			}
-		} catch (ClassCastException e) {
+		} catch (Exception e) {
 			logger.trace("Une valeur entrée est incorrecte");
 			message.fail_value();
 		}
