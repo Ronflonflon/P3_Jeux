@@ -29,7 +29,7 @@ public class Gamepom {
 			}
 
 			while (win == 0 && my_person.shots < config.limit_of_try) {
-				System.out.println("Nombre d'essaie(s) restant(s) : " + (config.limit_of_try - my_person.shots));
+				System.out.println("Nombre d'essai(s) restant(s) : " + (config.limit_of_try - my_person.shots));
 				System.out.print("Choisi un nombre contenant " + config.nb_case + " chiffres : ");
 				my_person.nb_try = sc.nextInt();
 				if (my_person.nb_try < 0) {
@@ -129,7 +129,7 @@ public class Gamepom {
 				}
 
 				while (win_person == 0 && win_computer == 0) {
-					System.out.println("Nombre d'essaie(s) restant(s) : " + (config.limit_of_try - my_person.shots));
+					System.out.println("Nombre d'essai(s) restant(s) : " + (config.limit_of_try - my_person.shots));
 					System.out.print(
 							"Choisi un nombre contenant " + calcul.nb_size(my_computer.nb_to_guess) + " chiffres : ");
 					my_person.nb_try = resp.nextInt();
