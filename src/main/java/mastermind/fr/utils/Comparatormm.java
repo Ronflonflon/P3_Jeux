@@ -118,7 +118,7 @@ public class Comparatormm {
 		int k = 0;
 		int forbid_placed[] = new int[my_person.tab_to_guess.length];
 		int forbid_present[] = new int[my_person.tab_to_guess.length];
-
+		
 		for (int i = 0; i < my_computer.tab_try.length; i++) {
 			if (my_computer.tab_try[i] == my_person.tab_to_guess[i]) {
 				forbid_placed[i] = 1;
@@ -181,7 +181,8 @@ public class Comparatormm {
 				System.out.println(" présente");
 			}
 		}
-		my_computer.last_try = my_computer.tab_try;
+		
+		//System.out.println("===============");
 		if (my_computer.first_start == true) {
 			my_computer.last_placed = my_computer.count_placed;
 			my_computer = my_computer.generate_tab_try(my_computer, my_person);

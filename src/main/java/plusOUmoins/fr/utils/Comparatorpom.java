@@ -30,7 +30,6 @@ public class Comparatorpom {
 			}
 		}
 		System.out.println();
-		System.out.println("good shots = " + good_shot + " et " + calcul.nb_size(my_computer.nb_to_guess));
 		if(good_shot >= calcul.nb_size(my_computer.nb_to_guess)) {
 			return 1;
 		} else {

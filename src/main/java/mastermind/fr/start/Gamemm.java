@@ -73,6 +73,11 @@ public class Gamemm {
 			} else {
 				System.out.println("Perdu ! Vous avez dépassé les " + config.limit_of_try + " coups autorisés !");
 				logger.trace("Perdu, nombre de coups max : " + config.limit_of_try);
+				System.out.print("La combinaison de l'orginateur était : ");
+				for (int a = 0; a < my_computer.tab_to_guess.length; a++) {
+					System.out.print(my_computer.tab_to_guess[a]);
+				}
+				System.out.println();
 			}
 		} catch (Exception e) {
 			messages.fail_value();
@@ -115,12 +120,12 @@ public class Gamemm {
 			my_person.tab_to_guess = calculs.create_tab(my_person.nb_to_guess, config.nb_case);
 			my_computer.tab_try = my_computer.initialize_result(config.nb_case);
 			my_computer.proba_result = my_computer.initialize_proba(config.nb_case, config.limit_color);
-			my_computer.last_try = my_computer.tab_try;
 			my_computer.last_placed = 0;
 			my_computer.last_present = 0;
 			my_computer.position = (config.nb_case - 1);
 			my_computer.shots = 0;
 			my_computer.first_start = true;
+			my_computer.last_try = my_computer.tab_try;
 			
 			System.out.println();
 			
@@ -133,8 +138,8 @@ public class Gamemm {
 			*/
 			
 			while (my_computer.win == false && my_computer.shots < config.limit_of_try) {
-				my_computer.last_try = my_computer.tab_try;
 				my_computer = compar.defender_tab_compar(my_computer, my_person);
+				my_computer.last_try = my_computer.tab_try;
 				my_computer.shots++;
 				if (my_computer.count_placed == my_person.tab_to_guess.length) {
 					my_computer.win = true;
@@ -233,8 +238,8 @@ public class Gamemm {
 						messages.fail_value();
 					}
 
-					my_computer.last_try = my_computer.tab_try;
 					my_computer = compar.defender_tab_compar(my_computer, my_person);
+					my_computer.last_try = my_computer.tab_try;
 					my_computer.shots++;
 					if (my_computer.count_placed == my_person.tab_to_guess.length) {
 						my_computer.win = true;

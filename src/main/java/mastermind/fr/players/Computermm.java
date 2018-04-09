@@ -17,21 +17,16 @@ public class Computermm extends Playermm {
 
 	public Computermm generate_tab_try(Computermm my_computer, Personmm my_person) {
 		int i = 0;
-
-		/*
-		 * for (int a = 0; a < my_computer.tab_try.length; a++) {
-		 * System.out.println("a = " + a + " Valeur : " + my_computer.tab_try[a]); }
-		 */
-		//System.out.println(my_computer.count_placed + " et " + my_computer.last_placed);
+		
+		//System.out.println("Positon = " + my_computer.position + ", last placed = " + my_computer.last_placed + ", present placed = " + my_computer.count_placed);
+		
 		if (my_computer.count_placed < my_computer.last_placed || my_computer.count_placed > my_computer.last_placed) {
-			while (i < my_computer.tab_try.length && my_computer.tab_try[i] == my_computer.last_try[i]) {
-				// System.out.println("a = " + i + " tab_try = " + my_computer.tab_try[i] + " et
-				// " + my_computer.last_try[i]);
-				i++;
+			if (my_computer.count_placed < my_computer.last_placed && my_computer.tab_try[my_computer.position] == 1) {
+				//System.out.println("Un 0 trouvé");
+				my_computer.tab_try[my_computer.position] = 0;
+				my_computer.position++;
 			}
-			i--;
-			//System.out.println("On entre");
-			proba_result[i][my_computer.last_try[i]] = 1;
+			//System.out.println("On nombre trouvé");
 			my_computer.position--;
 		} else {
 			if (my_computer.first_start == true 
@@ -40,7 +35,6 @@ public class Computermm extends Playermm {
 				my_computer.position--;
 			}
 			my_computer.tab_try[my_computer.position]++;
-			//System.out.println("Par là = " + my_computer.position);
 		}
 
 		return my_computer;
@@ -69,12 +63,6 @@ public class Computermm extends Playermm {
 			tab[i] = 0;
 			i++;
 		}
-		/*
-		 * if (size % 2 == 1) { limite = limite + 1; } else { //NTD }
-		 * 
-		 * while (i < size) { if(i < (limite / 2)) { tab[i] = 0; } else { tab[i] = 1; }
-		 * i++; }
-		 */
 
 		return tab;
 	}
