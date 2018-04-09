@@ -18,15 +18,11 @@ public class Computermm extends Playermm {
 	public Computermm generate_tab_try(Computermm my_computer, Personmm my_person) {
 		int i = 0;
 		
-		//System.out.println("Positon = " + my_computer.position + ", last placed = " + my_computer.last_placed + ", present placed = " + my_computer.count_placed);
-		
 		if (my_computer.count_placed < my_computer.last_placed || my_computer.count_placed > my_computer.last_placed) {
 			if (my_computer.count_placed < my_computer.last_placed && my_computer.tab_try[my_computer.position] == 1) {
-				//System.out.println("Un 0 trouvé");
 				my_computer.tab_try[my_computer.position] = 0;
 				my_computer.position++;
 			}
-			//System.out.println("On nombre trouvé");
 			my_computer.position--;
 		} else {
 			if (my_computer.first_start == true 

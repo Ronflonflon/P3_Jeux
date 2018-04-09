@@ -27,6 +27,7 @@ public class Comparatormm {
 		int k = 0;
 		int forbid_placed[] = new int[my_person.tab_try.length];
 		int forbid_present[] = new int[my_person.tab_try.length];
+		int found = 0;
 
 		for (int i = 0; i < my_person.tab_try.length; i++) {
 			if (my_person.tab_try[i] == my_computer.tab_to_guess[i]) {
@@ -38,11 +39,12 @@ public class Comparatormm {
 		}
 
 		while (j < my_person.tab_try.length) {
-			while (k < my_computer.tab_to_guess.length) {
+			while (k < my_computer.tab_to_guess.length && found == 0) {
 				if (my_person.tab_try[j] == my_computer.tab_to_guess[k] && forbid_present[k] == 0) {
 					if (forbid_placed[k] == 0) {
 						forbid_present[k] = 1;
 						count_present++;
+						found = 1;
 					} else {
 						forbid_present[k] = 0;
 					}
@@ -50,6 +52,7 @@ public class Comparatormm {
 
 				k++;
 			}
+			found = 0;
 			k = 0;
 			j++;
 		}
@@ -118,6 +121,7 @@ public class Comparatormm {
 		int k = 0;
 		int forbid_placed[] = new int[my_person.tab_to_guess.length];
 		int forbid_present[] = new int[my_person.tab_to_guess.length];
+		int found = 0;
 
 		for (int i = 0; i < my_computer.tab_try.length; i++) {
 			if (my_computer.tab_try[i] == my_person.tab_to_guess[i]) {
@@ -129,11 +133,12 @@ public class Comparatormm {
 		}
 
 		while (j < my_computer.tab_try.length) {
-			while (k < my_person.tab_to_guess.length) {
+			while (k < my_person.tab_to_guess.length && found == 0) {
 				if (my_computer.tab_try[j] == my_person.tab_to_guess[k] && forbid_present[k] == 0) {
 					if (forbid_placed[k] == 0) {
 						forbid_present[k] = 1;
 						my_computer.count_present++;
+						found = 1;
 					} else {
 						forbid_present[k] = 0;
 					}
@@ -141,6 +146,7 @@ public class Comparatormm {
 
 				k++;
 			}
+			found = 0;
 			k = 0;
 			j++;
 		}
@@ -182,7 +188,6 @@ public class Comparatormm {
 			}
 		}
 		
-		//System.out.println("===============");
 		if (my_computer.first_start == true) {
 			my_computer.last_placed = my_computer.count_placed;
 			my_computer = my_computer.generate_tab_try(my_computer, my_person);
