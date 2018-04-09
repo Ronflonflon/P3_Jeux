@@ -201,18 +201,18 @@ public class Gamemm {
 							"Seuls des chiffres compris entre 0 et " + (config.limit_color - 1) + " sont autorisés !");
 				}
 			}
-			size = config.nb_case;
-			my_person.tab_to_guess = calculs.create_tab(my_person.nb_to_guess, size);
 			my_computer.size_to_guess = calculs.nb_size(my_computer.nb_to_guess);
 			my_computer.tab_to_guess = calculs.create_tab_computer(config.nb_case, config.limit_color);
-			my_computer.tab_try = my_computer.initialize_result(size);
-			my_computer.proba_result = my_computer.initialize_proba(size, limit);
-			my_computer.last_try = my_computer.tab_try;
+			my_person.tab_to_guess = calculs.create_tab(my_person.nb_to_guess, config.nb_case);
+			my_computer.tab_try = my_computer.initialize_result(config.nb_case);
+			my_computer.proba_result = my_computer.initialize_proba(config.nb_case, config.limit_color);
 			my_computer.last_placed = 0;
 			my_computer.last_present = 0;
-			my_computer.position = (my_computer.tab_try.length - 1);
+			my_computer.position = (config.nb_case - 1);
 			my_computer.shots = 0;
-
+			my_computer.first_start = true;
+			my_computer.last_try = my_computer.tab_try;
+			
 			if (config.dev == 1) {
 				System.out.print("Nombre de l'ordinteur ");
 				for (int i = 0; i < my_computer.tab_to_guess.length; i++) {
@@ -229,7 +229,7 @@ public class Gamemm {
 				if (my_person.nb_try >= 0
 						&& calculs.verify_tab_try(my_person.nb_try, config.limit_color) == true) {
 					my_person.size_try = calculs.nb_size(my_person.nb_try);
-					my_person.tab_try = calculs.create_tab(my_person.nb_try, size);
+					my_person.tab_try = calculs.create_tab(my_person.nb_try, config.nb_case);
 
 					if (my_person.tab_try.length == my_computer.tab_to_guess.length) {
 						my_person = compar.challenger_tab_compar(my_person, my_computer);
