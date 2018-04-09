@@ -10,7 +10,7 @@ public class Playerpom {
 	public int shots;
 	public List tab_try;
 	public List tab_to_guess;
-	
+
 	public Playerpom() {
 		shots = 0;
 	}

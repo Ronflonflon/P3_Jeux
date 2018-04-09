@@ -1,5 +1,5 @@
 package main.java.mastermind.fr.players;
 
-public class Personmm extends Playermm{
-	
+public class Personmm extends Playermm {
+
 }

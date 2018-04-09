@@ -17,7 +17,7 @@ public class Gamepom {
 		Computerpom my_computer = new Computerpom();
 		Scanner sc = new Scanner(System.in);
 		Messagespom messages = new Messagespom();
-		
+
 		int win = 0;
 
 		try {

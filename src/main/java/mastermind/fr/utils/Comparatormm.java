@@ -27,34 +27,41 @@ public class Comparatormm {
 		int k = 0;
 		int forbid_placed[] = new int[my_person.tab_try.length];
 		int forbid_present[] = new int[my_person.tab_try.length];
+		int try_forbid[] = new int[my_person.tab_try.length];
 		int found = 0;
 
 		for (int i = 0; i < my_person.tab_try.length; i++) {
 			if (my_person.tab_try[i] == my_computer.tab_to_guess[i]) {
 				forbid_placed[i] = 1;
 				count_placed++;
+				try_forbid[i] = 1;
 			} else {
+				try_forbid[i] = 0;
 				forbid_placed[i] = 0;
 			}
 		}
 
 		while (j < my_person.tab_try.length) {
-			while (k < my_computer.tab_to_guess.length && found == 0) {
-				if (my_person.tab_try[j] == my_computer.tab_to_guess[k] && forbid_present[k] == 0) {
-					if (forbid_placed[k] == 0) {
-						forbid_present[k] = 1;
-						count_present++;
-						found = 1;
-					} else {
-						forbid_present[k] = 0;
+			if (try_forbid[j] == 0) {
+				while (k < my_computer.tab_to_guess.length && found == 0) {
+					if (my_person.tab_try[j] == my_computer.tab_to_guess[k] && forbid_present[k] == 0) {
+						if (forbid_placed[k] == 0) {
+							forbid_present[k] = 1;
+							count_present++;
+							found = 1;
+						} else {
+							forbid_present[k] = 0;
+						}
 					}
-				}
 
-				k++;
+					k++;
+				}
+				found = 0;
+				k = 0;
+				j++;
+			} else {
+				j++;
 			}
-			found = 0;
-			k = 0;
-			j++;
 		}
 		j = 0;
 		System.out.print("Joueur : ");
@@ -187,7 +194,7 @@ public class Comparatormm {
 				System.out.println(" présente");
 			}
 		}
-		
+
 		if (my_computer.first_start == true) {
 			my_computer.last_placed = my_computer.count_placed;
 			my_computer = my_computer.generate_tab_try(my_computer, my_person);

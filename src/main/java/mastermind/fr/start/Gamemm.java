@@ -34,7 +34,7 @@ public class Gamemm {
 		int size = 0;
 		my_person.win = false;
 		my_person.shots = 0;
-		
+
 		try {
 			my_computer.tab_to_guess = calculs.create_tab_computer(config.nb_case, config.limit_color);
 			if (config.dev == 1) {
@@ -126,17 +126,15 @@ public class Gamemm {
 			my_computer.shots = 0;
 			my_computer.first_start = true;
 			my_computer.last_try = my_computer.tab_try;
-			
+
 			System.out.println();
-			
+
 			/*
-			System.out.print("Chiffre : ");
-			for (int a = 0; a < my_computer.tab_try.length; a++) {
-				System.out.print(my_computer.tab_try[a]);
-			}
-			System.out.println();
-			*/
-			
+			 * System.out.print("Chiffre : "); for (int a = 0; a <
+			 * my_computer.tab_try.length; a++) { System.out.print(my_computer.tab_try[a]);
+			 * } System.out.println();
+			 */
+
 			while (my_computer.win == false && my_computer.shots < config.limit_of_try) {
 				my_computer = compar.defender_tab_compar(my_computer, my_person);
 				my_computer.last_try = my_computer.tab_try;
@@ -145,7 +143,7 @@ public class Gamemm {
 					my_computer.win = true;
 				}
 			}
-			
+
 			if (my_computer.shots < config.limit_of_try) {
 				logger.trace("Perdu ! L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
 				System.out.println("Perdu ! L'ordinateur a trouvé la combinaison en " + my_computer.shots + " coups !");
@@ -212,7 +210,7 @@ public class Gamemm {
 			my_computer.shots = 0;
 			my_computer.first_start = true;
 			my_computer.last_try = my_computer.tab_try;
-			
+
 			if (config.dev == 1) {
 				System.out.print("Nombre de l'ordinteur ");
 				for (int i = 0; i < my_computer.tab_to_guess.length; i++) {
@@ -226,8 +224,7 @@ public class Gamemm {
 				System.out.println("Nombre d'essai(s) restant(s) : " + (config.limit_of_try - my_person.shots));
 				System.out.print("Tentez de trouver la combinaison : ");
 				my_person.nb_try = sc.nextInt();
-				if (my_person.nb_try >= 0
-						&& calculs.verify_tab_try(my_person.nb_try, config.limit_color) == true) {
+				if (my_person.nb_try >= 0 && calculs.verify_tab_try(my_person.nb_try, config.limit_color) == true) {
 					my_person.size_try = calculs.nb_size(my_person.nb_try);
 					my_person.tab_try = calculs.create_tab(my_person.nb_try, config.nb_case);
 
@@ -256,6 +253,11 @@ public class Gamemm {
 			} else if (my_person.win == false && my_computer.win == true) {
 				logger.trace("Ordinateur a gagné en " + my_computer.shots + " coups");
 				System.out.println("Perdu ! L'ordinateur a gagné en " + my_person.shots + " coups");
+				System.out.print("La combinaison de l'orginateur était : ");
+				for (int a = 0; a < my_computer.tab_to_guess.length; a++) {
+					System.out.print(my_computer.tab_to_guess[a]);
+				}
+				System.out.println();
 			} else if (my_person.win == true && my_computer.win == true) {
 				logger.trace("Egalité en " + my_person.shots + " coups");
 				System.out.println("Egalité ! Vous avez tous les deux trouvé la combinaison de l'autre en "
@@ -266,6 +268,11 @@ public class Gamemm {
 				System.out.println(
 						"Tout le monde a perdu ! Personne n'a réussi à trouvé la combinaison de l'autre en moins de "
 								+ config.limit_of_try + " coups !");
+				System.out.print("La combinaison de l'orginateur était : ");
+				for (int a = 0; a < my_computer.tab_to_guess.length; a++) {
+					System.out.print(my_computer.tab_to_guess[a]);
+				}
+				System.out.println();
 			}
 
 		} catch (Exception e) {

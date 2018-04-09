@@ -8,7 +8,7 @@ public class Messagesmm {
 		System.out.println("- 3 pour le Mode Duel");
 		System.out.print("Choisi le mode de jeu : ");
 	}
-	
+
 	public void fail_value() {
 		System.out.println("La valeur que vous avez entré semble incorrecte");
 	}

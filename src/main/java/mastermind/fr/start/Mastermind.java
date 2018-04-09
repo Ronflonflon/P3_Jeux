@@ -46,7 +46,7 @@ public class Mastermind {
 				messages.fail_value();
 				mode = 0;
 			}
-		} catch (ClassCastException e) {
+		} catch (Exception e) {
 			messages.fail_value();
 
 		}

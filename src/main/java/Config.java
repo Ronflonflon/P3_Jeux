@@ -11,13 +11,13 @@ public class Config {
 	public int limit_of_try;
 	public int limit_color;
 	public int nb_case;
-	
+
 	public Config(String[] args) {
 		Properties prop = new Properties();
 		InputStream input = null;
 		boolean dev_present = false;
 		String dev_mode = "--dev";
-		
+
 		try {
 			String filename = new File(".").getCanonicalPath() + "/resources/config.properties";
 			input = new FileInputStream(filename);
@@ -25,11 +25,11 @@ public class Config {
 		} catch (IOException e) {
 			System.out.println("Un problème a été rencontré lors de la lecture du fichier de configurations !");
 		}
-		for(int i = 0; i < args.length; i++) {
+		for (int i = 0; i < args.length; i++) {
 			if (dev_mode.equals(args[i])) {
 				dev_present = true;
 			} else {
-				//NTD
+				// NTD
 			}
 		}
 		if (dev_present == false && Integer.parseInt(prop.getProperty("dev")) == 0) {

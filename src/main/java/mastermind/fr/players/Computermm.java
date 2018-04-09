@@ -17,7 +17,7 @@ public class Computermm extends Playermm {
 
 	public Computermm generate_tab_try(Computermm my_computer, Personmm my_person) {
 		int i = 0;
-		
+
 		if (my_computer.count_placed < my_computer.last_placed || my_computer.count_placed > my_computer.last_placed) {
 			if (my_computer.count_placed < my_computer.last_placed && my_computer.tab_try[my_computer.position] == 1) {
 				my_computer.tab_try[my_computer.position] = 0;
@@ -25,8 +25,8 @@ public class Computermm extends Playermm {
 			}
 			my_computer.position--;
 		} else {
-			if (my_computer.first_start == true 
-					&& my_computer.tab_try[my_computer.tab_try.length - 1] == my_person.tab_to_guess[my_person.tab_to_guess.length - 1]) {
+			if (my_computer.first_start == true && my_computer.tab_try[my_computer.tab_try.length
+					- 1] == my_person.tab_to_guess[my_person.tab_to_guess.length - 1]) {
 				proba_result[my_computer.tab_try.length - 1][my_computer.last_try[my_computer.tab_try.length - 1]] = 1;
 				my_computer.position--;
 			}

@@ -11,6 +11,7 @@ import main.java.plusOUmoins.fr.utils.Messagespom;
 
 public class Plusoumoins {
 	private static final Logger logger = LogManager.getLogger(Main.class.getName());
+
 	public void Plusoumoins(Config config) {
 		int mode;
 		Scanner sc = new Scanner(System.in);

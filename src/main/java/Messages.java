@@ -7,11 +7,11 @@ public class Messages {
 		System.out.println("2 - Mastermind");
 		System.out.print("Sélectionne le jeu auquel tu souhaites jouer : ");
 	}
-	
+
 	public void fail_value() {
 		System.out.println("Un erreur c'est produite (avez-vous entré une valeur incorrecte ?)");
 	}
-	
+
 	public void choose_mod() {
 		System.out.println("A quel mode de jeu souhaites-tu jouer ?");
 		System.out.println("- 1 pour le Mode Challenger");
